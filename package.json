@@ -2,15 +2,22 @@
   "name": "restaurant",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "Stefano Frisoni fanofrisoni4@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.1",
+    "style-loader": "^3.3.2",
     "webpack": "^5.82.1",
     "webpack-cli": "^5.1.1"
+  },
+  "dependencies": {
+    "restaurant": "github:fanofrisoni/restaurant"
   }
 }
