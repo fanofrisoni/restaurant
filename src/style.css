@@ -13,7 +13,7 @@
   --title-font: 'TitleFont', system-ui, -apple-system;
   --primary-font: 'TextFont', system-ui, -apple-system;
   --text-color: #554949;
-  --background-color: #d6c38e;
+  --background-color: #e7ba7f;
   --primary-color: #85350a;
   --secondary-color: #3d573e;
   --accent-color: #c60606;
@@ -24,9 +24,13 @@
   padding: 0;
   margin: 0;
 }
+body {
+  overflow-x: hidden;
+}
 .headerdiv {
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
 .back {
   z-index: 0;
@@ -47,16 +51,153 @@ header {
   overflow: hidden;
   letter-spacing: 7px;
   text-transform: lowercase;
-  width: 100vw;
+  width: 100%;
   text-align: center;
-  font-size: 110px;
+  font-size: clamp(5vw, 110px, 50vw);
+  white-space: nowrap;
   background-color: var(--background-color);
   color: var(--background-color);
   font-family: var(--title-font);
   text-shadow: 6px 6px 0px var(--primary-color),
                 -6px -6px 0px var(--secondary-color);
+  animation: headershadow 4s infinite ease-in-out alternate;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0px 0px 15px var(--text-color);
+}
+@keyframes headershadow {
+  0% {
+    text-shadow: 6px 6px 0px var(--primary-color),
+                -6px -6px 0px var(--secondary-color);
+  }
+  50% {
+    text-shadow: 4px 4px 0px var(--primary-color),
+                -7px -6px 0px var(--secondary-color);
+  }
+  100% {
+    text-shadow: 5px 7px 0px var(--primary-color),
+                -5px -6px 0px var(--secondary-color);
+  }
+}
+
+.maindiv {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+.navbar {
+  background-color: var(--secondary-color);
+  width: 100%;
+  height: 10vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.navbutton {
+  width: 110px;
+  height: 100%;
+  text-align: center;
+  padding: 3px 5px;
+  font-family: var(--primary-font);
+  font-weight: 600;
+  letter-spacing: 1px;
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  border: none;
+}
+
+.navbutton:hover {
+  background-color: var(--accent-color);
+  box-shadow: 0 5px 0 var(--accent-color);
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+.navbutton:active {
+  transform: scale(.98);
+  transition: 0.1s ease-in-out;
+}
+
+.bselected {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  pointer-events: none;
+  transition: 0.2s ease-in-out;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  font-family: var(--title-font);
+  color: var(--background-color);
+  text-align: center;
+  height: 7vh;
+}
+
+@media (max-width:480px) {
+  header {
+    font-size: clamp(15%, 90px, 25vw);
+  }
+  .navbutton {
+    font-size: clamp(10%, 20px, 15vw);
+  }
+  footer {
+    display: none;
+  }
+}
+
+
+.homegrid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  text-align-last: center;
+  gap: 10px;
+  font-family: var(--primary-font);
+  padding-left: 7vw;
+}
+
+.logoimg {
+  align-self: center;
+  justify-self: center;
+  background-image: url(./ilfornaiologo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 75%;
+  width: 62%;
+  grid-column-start: 2;
+  grid-row-start: span 2;
+  box-shadow: 5px 5px 0px var(--primary-color),
+  -5px -5px 0px var(--secondary-color);
+  margin-bottom: 3vh;
+}
+
+.h2home {
+  text-transform: uppercase;
+  align-self: flex-end;
+  justify-self: end;
+  grid-row-start: 1;
+  color: var(--text-color);
+  font-size: clamp(15%, 20px, 5vw);
+}
+
+.h3home {
+  align-self: flex-start;
+  justify-self: end;
+  grid-row-start: 2;
+  color: var(--text-color);
+  font-size: clamp(15%, 16px, 5vw);
 }
